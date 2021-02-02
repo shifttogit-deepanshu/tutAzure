@@ -1,7 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
 
 function App() {
+
+  const sendData = ()=>{
+    
+    var config = {
+      method: 'get',
+      url: 'http://localhost:3001/getdata',
+      headers: { 
+        '': ''
+      }
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +39,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Button onClick={()=>sendData()}></Button>
     </div>
   );
 }
